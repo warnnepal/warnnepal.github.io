@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WARN Nepal – Women Agency Research Center Nepal</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header id="navbar">
+    <div class="container nav-container">
+
+      <!-- Logo: uses images/logo.* if present, falls back to text badge -->
+      <a href="index.html" class="logo" aria-label="WARN Nepal Home" id="logoLink">
+        <div class="logo-img-wrap" id="logoImgWrap">
+          <!-- JS inserts <img> here if logo file exists, else shows letter badge -->
+          <div class="logo-icon" id="logoBadge">W</div>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">WARN Nepal</span>
+          <span class="logo-sub"
+            data-en="Women Agency Research Center Nepal"
+            data-np="महिला एजेन्सी अनुसन्धान केन्द्र नेपाल">Women Agency Research Center Nepal</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
+        <a href="index.html"   data-en="Home"    data-np="गृहपृष्ठ"  class="nav-link active">Home</a>
+        <a href="gallery.html" data-en="Gallery" data-np="ग्यालरी"   class="nav-link">Gallery</a>
+        <a href="#purpose"     data-en="Purpose" data-np="उद्देश्य"  class="nav-link">Purpose</a>
+        <a href="#team"        data-en="Team"    data-np="टोली"      class="nav-link">Team</a>
+        <a href="#contact"     data-en="Contact" data-np="सम्पर्क"   class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <div class="lang-toggle" aria-label="Language Selector">
+          <button id="langEN" class="lang-btn active" onclick="setLang('en')">EN</button>
+          <span class="lang-divider">|</span>
+          <button id="langNP" class="lang-btn" onclick="setLang('np')">नेपाली</button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO – FULL WIDTH ===== -->
+  <section id="home" class="hero">
+    <!-- JS sets the landing image as CSS background-image -->
+    <div class="hero-text-col">
+      <div class="container">
+        <div class="hero-text-inner">
+          <p class="hero-tagline"
+             data-en="Empowering Women Across Nepal"
+             data-np="नेपालभर महिला सशक्तिकरण">Empowering Women Across Nepal</p>
+
+          <h1 class="hero-title"
+              data-en="Building a <span>Stronger</span> Tomorrow<br>for Every Woman"
+              data-np="प्रत्येक महिलाका लागि एउटा<br><span>सशक्त</span> भविष्य निर्माण">
+            Building a <span>Stronger</span> Tomorrow<br>for Every Woman
+          </h1>
+
+          <p class="hero-desc"
+             data-en="WARN Nepal is a non-profit organization supporting disaster-affected communities, providing scholarships for the underprivileged, and advancing women empowerment across Nepal."
+             data-np="WARN नेपाल एक गैरनाफामूलक संस्था हो जसले विपद् प्रभावित समुदायलाई सहयोग, विपन्नका लागि छात्रवृत्ति र महिला सशक्तिकरणका लागि नेपालभर काम गर्दछ।">
+            WARN Nepal is a non-profit organization supporting disaster-affected communities,
+            providing scholarships for the underprivileged, and advancing women empowerment across Nepal.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#purpose" class="btn btn-primary"
+               data-en="Our Mission" data-np="हाम्रो अभियान">Our Mission</a>
+            <a href="#contact" class="btn btn-outline"
+               data-en="Get Involved" data-np="सहभागी हनुहोस्">Get Involved</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS STRIP ===== -->
+  <section id="about-strip" class="stats-strip">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">1,200+</span>
+        <span class="stat-label" data-en="Women Supported" data-np="सहयोग गरिएका महिला">Women Supported</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">18</span>
+        <span class="stat-label" data-en="Districts Reached" data-np="पुगिएका जिल्लाहरू">Districts Reached</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">45+</span>
+        <span class="stat-label" data-en="Programs Run" data-np="सञ्चालित कार्यक्रमहरू">Programs Run</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">8</span>
+        <span class="stat-label" data-en="Years of Service" data-np="सेवाका वर्षहरू">Years of Service</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SNAPSHOT ===== -->
+  <section id="about" class="about-section section">
+    <div class="container about-grid">
+      <div class="about-image">
+        <!-- Uses landing image as fallback; replace src with your own community photo -->
+        <img
+          src="images/landing/landing.png"
+          alt="WARN Nepal community"
+          class="about-real-img"
+          loading="lazy"
+          onerror="this.parentElement.innerHTML='<div class=\'about-img-placeholder\'><i class=\'fa-solid fa-users\'></i><p>Community Photo</p></div>'"
+        />
+      </div>
+      <div class="about-text">
+        <span class="section-tag" data-en="Who We Are" data-np="हामी को हौं">Who We Are</span>
+        <h2 data-en="A Non-Profit Rooted in<br>Community &amp; Compassion"
+            data-np="समुदाय र करुणामा जरा गाडेको<br>गैरनाफामूलक संस्था">
+          A Non-Profit Rooted in<br>Community &amp; Compassion
+        </h2>
+        <p data-en="Founded in 2016, WARN Nepal (Women Agency Research Center Nepal) is a registered non-profit organization. We support communities in times of disaster, offer scholarships for underprivileged students, and work for women empowerment across Nepal."
+           data-np="२०१६ मा स्थापित WARN नेपाल (महिला एजेन्सी अनुसन्धान केन्द्र नेपाल) एक दर्ता गैरनाफामूलक संस्था हो। हामी विपद्का बेला समुदायलाई सहयोग गर्छौं, विपन्न विद्यार्थीका लागि छात्रवृत्ति दिन्छौं र नेपालभर महिला सशक्तिकरणका लागि काम गर्छौं।">
+          Founded in 2016, WARN Nepal (Women Agency Research Center Nepal) is a registered
+          non-profit organization. We support communities in times of disaster, offer scholarships
+          for underprivileged students, and work for women empowerment across Nepal.
+        </p>
+        <a href="#purpose" class="btn btn-primary"
+           data-en="Learn More" data-np="थप जान्नुहोस्">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY PREVIEW STRIP ===== -->
+  <section id="gallery" class="gallery-preview-section section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Our Work in Action" data-np="हाम्रो काम">Our Work in Action</span>
+        <h2 data-en="Gallery" data-np="ग्यालरी">Gallery</h2>
+        <p data-en="A glimpse into the lives we touch and the communities we serve."
+           data-np="हामीले छुने जीवन र सेवा गर्ने समुदायको झलक।">
+          A glimpse into the lives we touch and the communities we serve.
+        </p>
+      </div>
+
+      <!-- Preview grid – JS populates from images/3.* … 7.* -->
+      <div class="gallery-preview-grid" id="galleryPreviewGrid">
+        <!-- Filled by main.js; shows placeholders if no images found -->
+        <div class="gp-placeholder"><i class="fa-solid fa-image"></i></div>
+        <div class="gp-placeholder"><i class="fa-solid fa-image"></i></div>
+        <div class="gp-placeholder"><i class="fa-solid fa-image"></i></div>
+        <div class="gp-placeholder"><i class="fa-solid fa-image"></i></div>
+        <div class="gp-placeholder"><i class="fa-solid fa-image"></i></div>
+      </div>
+
+      <div class="gallery-preview-cta">
+        <a href="gallery.html" class="btn btn-primary"
+           data-en="View Full Gallery" data-np="पूरा ग्यालरी हेर्नुहोस्">View Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PURPOSE ===== -->
+  <section id="purpose" class="purpose-section section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Why We Exist" data-np="हामी किन अवस्थित छौं">Why We Exist</span>
+        <h2 data-en="Our Purpose" data-np="हाम्रो उद्देश्य">Our Purpose</h2>
+        <p data-en="Guided by strong values, we work toward a Nepal where every woman can live with dignity, safety, and opportunity."
+           data-np="दृढ मूल्यहरूद्वारा निर्देशित, हामी त्यस्तो नेपालका लागि काम गर्दछौं जहाँ प्रत्येक महिला सम्मान, सुरक्षा र अवसरका साथ जीवन जिउन सकोस्।">
+          Guided by strong values, we work toward a Nepal where every woman can live
+          with dignity, safety, and opportunity.
+        </p>
+      </div>
+
+      <div class="purpose-grid">
+        <div class="purpose-card">
+          <div class="purpose-icon"><i class="fa-solid fa-eye"></i></div>
+          <h3 data-en="Vision" data-np="दृष्टिकोण">Vision</h3>
+          <p data-en="A Nepal where women have equal rights, equal opportunities, and the freedom to shape their own futures — free from discrimination and violence."
+             data-np="एउटा नेपाल जहाँ महिलाहरूसँग समान अधिकार, समान अवसर छ र उनीहरू भेदभाव र हिंसाबाट मुक्त भएर आफ्नै भविष्य आकार दिन स्वतन्त्र छन्।">
+            A Nepal where women have equal rights, equal opportunities, and the freedom
+            to shape their own futures — free from discrimination and violence.
+          </p>
+        </div>
+        <div class="purpose-card featured">
+          <div class="purpose-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <h3 data-en="Mission" data-np="अभियान">Mission</h3>
+          <p data-en="As a non-profit, we deliver disaster relief, scholarships for underprivileged learners, and women empowerment programs — building resilient individuals and communities across Nepal."
+             data-np="गैरनाफामूलक संस्थाको रूपमा हामी विपद् राहत, विपन्न विद्यार्थीका लागि छात्रवृत्ति र महिला सशक्तिकरण कार्यक्रम सञ्चालन गर्छौं — नेपालभर लचिलो व्यक्ति र समुदाय निर्माण गर्दै।">
+            As a non-profit, we deliver disaster relief, scholarships for underprivileged learners,
+            and women empowerment programs — building resilient individuals and communities across Nepal.
+          </p>
+        </div>
+        <div class="purpose-card">
+          <div class="purpose-icon"><i class="fa-solid fa-heart"></i></div>
+          <h3 data-en="Values" data-np="मूल्यहरू">Values</h3>
+          <p data-en="Dignity, Inclusion, Transparency, Community, and Courage guide everything we do at WARN Nepal."
+             data-np="सम्मान, समावेशिता, पारदर्शिता, समुदाय र साहस — यी मूल्यहरूले WARN नेपालमा हामी गर्ने सबै काम निर्देशित गर्दछन्।">
+            Dignity, Inclusion, Transparency, Community, and Courage guide everything
+            we do at WARN Nepal.
+          </p>
+        </div>
+      </div>
+
+      <!-- Focus Areas -->
+      <div class="focus-areas">
+        <h3 class="focus-title" data-en="Our Focus Areas" data-np="हाम्रा मूल क्षेत्रहरू">Our Focus Areas</h3>
+        <div class="focus-grid">
+          <div class="focus-item">
+            <i class="fa-solid fa-house-flood-water"></i>
+            <span data-en="Disaster Support" data-np="विपद् सहायता">Disaster Support</span>
+          </div>
+          <div class="focus-item">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span data-en="Scholarships for the Underprivileged" data-np="विपन्नका लागि छात्रवृत्ति">Scholarships for the Underprivileged</span>
+          </div>
+          <div class="focus-item">
+            <i class="fa-solid fa-hands-holding-heart"></i>
+            <span data-en="Women Empowerment" data-np="महिला सशक्तिकरण">Women Empowerment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM ===== -->
+  <section id="team" class="team-section section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="The People Behind WARN" data-np="WARN पछाडिका मानिसहरू">The People Behind WARN</span>
+        <h2 data-en="Our Team" data-np="हाम्रो टोली">Our Team</h2>
+        <p data-en="A dedicated group of professionals and volunteers committed to driving change for women across Nepal."
+           data-np="नेपालभर महिलाहरूका लागि परिवर्तन ल्याउन प्रतिबद्ध पेशेवर र स्वयंसेवकहरूको एक समर्पित समूह।">
+          A dedicated group of professionals and volunteers committed to driving change
+          for women across Nepal.
+        </p>
+      </div>
+
+      <div class="team-grid">
+
+        <!-- ── Team card: photo filename = images/team/sunita-sharma.* ── -->
+        <div class="team-card">
+          <div class="team-avatar" data-photo="sunita-sharma">
+            <!-- JS replaces icon with <img> when images/team/sunita-sharma.* exists -->
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+          </div>
+          <div class="team-info">
+            <h4>Sunita Sharma</h4>
+            <span class="team-role" data-en="Executive Director" data-np="कार्यकारी निर्देशक">Executive Director</span>
+            <p class="team-bio"
+               data-en="With 15 years in women's rights advocacy, Sunita leads WARN Nepal's strategic vision and partnerships."
+               data-np="महिला अधिकार वकालतमा १५ वर्षको अनुभवसहित, सुनिताले WARN नेपालको रणनीतिक दृष्टि र साझेदारीहरू नेतृत्व गर्दछिन्।">
+              With 15 years in women's rights advocacy, Sunita leads WARN Nepal's strategic vision and partnerships.
+            </p>
+          </div>
+          <div class="team-social">
+            <a href="#" aria-label="Email Sunita"><i class="fa-solid fa-envelope"></i></a>
+            <a href="#" aria-label="Sunita on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- ── Team card: photo filename = images/team/anita-thapa.* ── -->
+        <div class="team-card">
+          <div class="team-avatar" data-photo="anita-thapa">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+          </div>
+          <div class="team-info">
+            <h4>Anita Thapa</h4>
+            <span class="team-role" data-en="Program Coordinator" data-np="कार्यक्रम समन्वयकर्ता">Program Coordinator</span>
+            <p class="team-bio"
+               data-en="Anita coordinates WARN's field programs across 18 districts, ensuring impact reaches the most vulnerable communities."
+               data-np="अनिताले १८ जिल्लामा WARN का फिल्ड कार्यक्रमहरू समन्वय गर्दछिन्।">
+              Anita coordinates WARN's field programs across 18 districts, ensuring impact reaches the most vulnerable communities.
+            </p>
+          </div>
+          <div class="team-social">
+            <a href="#" aria-label="Email Anita"><i class="fa-solid fa-envelope"></i></a>
+            <a href="#" aria-label="Anita on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- ── Team card: photo filename = images/team/ramesh-kc.* ── -->
+        <div class="team-card">
+          <div class="team-avatar" data-photo="ramesh-kc">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+          </div>
+          <div class="team-info">
+            <h4>Ramesh KC</h4>
+            <span class="team-role" data-en="Legal Advisor" data-np="कानुनी सल्लाहकार">Legal Advisor</span>
+            <p class="team-bio"
+               data-en="Ramesh provides pro-bono legal counsel and leads our Legal Literacy training program across rural Nepal."
+               data-np="रमेशले प्रो-बोनो कानुनी परामर्श प्रदान गर्दछन् र ग्रामीण नेपालमा हाम्रो कानुनी साक्षरता कार्यक्रमको नेतृत्व गर्दछन्।">
+              Ramesh provides pro-bono legal counsel and leads our Legal Literacy training program across rural Nepal.
+            </p>
+          </div>
+          <div class="team-social">
+            <a href="#" aria-label="Email Ramesh"><i class="fa-solid fa-envelope"></i></a>
+            <a href="#" aria-label="Ramesh on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- ── Team card: photo filename = images/team/priya-rai.* ── -->
+        <div class="team-card">
+          <div class="team-avatar" data-photo="priya-rai">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+          </div>
+          <div class="team-info">
+            <h4>Priya Rai</h4>
+            <span class="team-role" data-en="Community Outreach Officer" data-np="सामुदायिक पहुँच अधिकारी">Community Outreach Officer</span>
+            <p class="team-bio"
+               data-en="Priya builds ground-level relationships with local women's groups and self-help cooperatives across Eastern Nepal."
+               data-np="प्रियाले पूर्वी नेपालमा स्थानीय महिला समूह र स्वयं-सहायता सहकारीहरूसँग जमिनी स्तरका सम्बन्ध निर्माण गर्दछिन्।">
+              Priya builds ground-level relationships with local women's groups and self-help cooperatives across Eastern Nepal.
+            </p>
+          </div>
+          <div class="team-social">
+            <a href="#" aria-label="Email Priya"><i class="fa-solid fa-envelope"></i></a>
+            <a href="#" aria-label="Priya on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="volunteer-cta">
+        <p data-en="Want to join our team or volunteer with us?"
+           data-np="हाम्रो टोलीमा सामेल हुन वा स्वयंसेवा गर्न चाहनुहुन्छ?">
+          Want to join our team or volunteer with us?
+        </p>
+        <a href="#contact" class="btn btn-outline"
+           data-en="Get in Touch" data-np="सम्पर्क गर्नुहोस्">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact-section section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Reach Out" data-np="सम्पर्क गर्नुहोस्">Reach Out</span>
+        <h2 data-en="Contact Us" data-np="हामीलाई सम्पर्क गर्नुहोस्">Contact Us</h2>
+        <p data-en="Whether you want to partner, donate, volunteer, or simply learn more — we'd love to hear from you."
+           data-np="चाहे तपाईं साझेदार, दान, स्वयंसेवा वा केवल थप जान्न चाहनुहुन्छ — हामी तपाईंबाट सुन्न चाहन्छौं।">
+          Whether you want to partner, donate, volunteer, or simply learn more — we'd love to hear from you.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-form-wrap">
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name" data-en="Full Name" data-np="पूरा नाम">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" />
+              <span class="form-error" id="nameError"></span>
+            </div>
+            <div class="form-group">
+              <label for="email" data-en="Email Address" data-np="इमेल ठेगाना">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+              <span class="form-error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+              <label for="subject" data-en="Subject" data-np="विषय">Subject</label>
+              <select id="subject" name="subject" required>
+                <option value="" data-en="Select a topic…" data-np="विषय छान्नुहोस्…">Select a topic…</option>
+                <option value="volunteer" data-en="Volunteer"     data-np="स्वयंसेवा">Volunteer</option>
+                <option value="donate"    data-en="Donate / Fund" data-np="दान / कोष">Donate / Fund</option>
+                <option value="partner"   data-en="Partnership"   data-np="साझेदारी">Partnership</option>
+                <option value="media"     data-en="Media Inquiry" data-np="मिडिया सोध">Media Inquiry</option>
+                <option value="other"     data-en="Other"         data-np="अन्य">Other</option>
+              </select>
+              <span class="form-error" id="subjectError"></span>
+            </div>
+            <div class="form-group">
+              <label for="message" data-en="Message" data-np="सन्देश">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us how we can help…" required></textarea>
+              <span class="form-error" id="messageError"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full"
+                    data-en="Send Message" data-np="सन्देश पठाउनुहोस्">Send Message</button>
+            <div id="formSuccess" class="form-success" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <div class="contact-info-card">
+            <h3 data-en="Contact Information" data-np="सम्पर्क जानकारी">Contact Information</h3>
+            <ul class="contact-details">
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                  <strong data-en="Address" data-np="ठेगाना">Address</strong>
+                  <p data-en="Baneshwor, Kathmandu 44600, Nepal" data-np="बानेश्वर, काठमाडौं ४४६००, नेपाल">Baneshwor, Kathmandu 44600, Nepal</p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                  <strong data-en="Phone" data-np="फोन">Phone</strong>
+                  <p><a href="tel:+97714567890">+977-1-456-7890</a></p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                  <strong data-en="Email" data-np="इमेल">Email</strong>
+                  <p><a href="mailto:info@warnnepal.org">info@warnnepal.org</a></p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-clock"></i>
+                <div>
+                  <strong data-en="Office Hours" data-np="कार्यालय समय">Office Hours</strong>
+                  <p data-en="Sun – Fri: 9:00 AM – 5:00 PM" data-np="आइत – शुक्र: बिहान ९:०० – साँझ ५:००">Sun – Fri: 9:00 AM – 5:00 PM</p>
+                </div>
+              </li>
+            </ul>
+            <div class="social-links">
+              <h4 data-en="Follow Us" data-np="हामीलाई फलो गर्नुहोस्">Follow Us</h4>
+              <div class="social-icons">
+                <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-placeholder" aria-label="Map of WARN Nepal office location">
+            <i class="fa-solid fa-map"></i>
+            <p data-en="Baneshwor, Kathmandu" data-np="बानेश्वर, काठमाडौं">Baneshwor, Kathmandu</p>
+            <a href="https://maps.google.com/?q=Baneshwor+Kathmandu+Nepal"
+               target="_blank" rel="noopener noreferrer"
+               class="btn btn-outline btn-sm"
+               data-en="Open in Google Maps" data-np="गुगल म्यापमा खोल्नुहोस्">Open in Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="WARN Nepal">
+          <div class="logo-img-wrap" id="footerLogoWrap">
+            <div class="logo-icon">W</div>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">WARN Nepal</span>
+            <span class="logo-sub"
+              data-en="Women Agency Research Center Nepal"
+              data-np="महिला एजेन्सी अनुसन्धान केन्द्र नेपाल">Women Agency Research Center Nepal</span>
+          </div>
+        </a>
+        <p data-en="A non-profit supporting disaster relief, scholarships for the underprivileged, and women empowerment since 2016."
+           data-np="२०१६ देखि विपद् राहत, विपन्नका लागि छात्रवृत्ति र महिला सशक्तिकरणमा काम गर्ने गैरनाफामूलक संस्था।">
+          A non-profit supporting disaster relief, scholarships for the underprivileged, and women empowerment since 2016.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4 data-en="Quick Links" data-np="द्रुत लिङ्कहरू">Quick Links</h4>
+        <ul>
+          <li><a href="index.html"   data-en="Home"    data-np="गृहपृष्ठ">Home</a></li>
+          <li><a href="gallery.html" data-en="Gallery" data-np="ग्यालरी">Gallery</a></li>
+          <li><a href="#purpose"     data-en="Purpose" data-np="उद्देश्य">Purpose</a></li>
+          <li><a href="#team"        data-en="Team"    data-np="टोली">Team</a></li>
+          <li><a href="#contact"     data-en="Contact" data-np="सम्पर्क">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4 data-en="Get In Touch" data-np="सम्पर्क गर्नुहोस्">Get In Touch</h4>
+        <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@warnnepal.org">info@warnnepal.org</a></p>
+        <p><i class="fa-solid fa-phone"></i> <a href="tel:+97714567890">+977-1-456-7890</a></p>
+        <p><i class="fa-solid fa-location-dot"></i>
+          <span data-en="Baneshwor, Kathmandu, Nepal" data-np="बानेश्वर, काठमाडौं, नेपाल">Baneshwor, Kathmandu, Nepal</span>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-en="&copy; 2024 WARN Nepal. All rights reserved. Registered Non-Profit Organization, Nepal."
+         data-np="&copy; २०२४ WARN नेपाल। सर्वाधिकार सुरक्षित। दर्ता गैरनाफामूलक संस्था, नेपाल।">
+        &copy; 2024 WARN Nepal. All rights reserved. Registered Non-Profit Organization, Nepal.
+      </p>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
