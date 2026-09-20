@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery – WARN Nepal</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="gallery-page">
+
+  <!-- ===== NAVBAR ===== -->
+  <header id="navbar" class="scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="WARN Nepal Home">
+        <div class="logo-img-wrap" id="logoImgWrap">
+          <div class="logo-icon" id="logoBadge">W</div>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">WARN Nepal</span>
+          <span class="logo-sub"
+            data-en="Women Agency Research Center Nepal"
+            data-np="महिला एजेन्सी अनुसन्धान केन्द्र नेपाल">Women Agency Research Center Nepal</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
+        <a href="index.html"   data-en="Home"    data-np="गृहपृष्ठ"  class="nav-link">Home</a>
+        <a href="gallery.html" data-en="Gallery" data-np="ग्यालरी"   class="nav-link active">Gallery</a>
+        <a href="index.html#purpose" data-en="Purpose" data-np="उद्देश्य" class="nav-link">Purpose</a>
+        <a href="index.html#team"    data-en="Team"    data-np="टोली"     class="nav-link">Team</a>
+        <a href="index.html#contact" data-en="Contact" data-np="सम्पर्क"  class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <div class="lang-toggle" aria-label="Language Selector">
+          <button id="langEN" class="lang-btn active" onclick="setLang('en')">EN</button>
+          <span class="lang-divider">|</span>
+          <button id="langNP" class="lang-btn" onclick="setLang('np')">नेपाली</button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <div class="page-hero">
+    <div class="container">
+      <p class="breadcrumb">
+        <a href="index.html" data-en="Home" data-np="गृहपृष्ठ">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span data-en="Gallery" data-np="ग्यालरी">Gallery</span>
+      </p>
+      <h1 data-en="Our Gallery" data-np="हाम्रो ग्यालरी">Our Gallery</h1>
+      <p data-en="Moments from our programs, events, and communities across Nepal."
+         data-np="नेपालभर हाम्रा कार्यक्रम, आयोजना र समुदायका क्षणहरू।">
+        Moments from our programs, events, and communities across Nepal.
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== SLIDESHOW ===== -->
+  <section class="slideshow-section">
+    <div class="slideshow-wrap">
+      <!-- Slides injected by gallery.js -->
+      <div class="slideshow-track" id="slideshowTrack">
+        <!-- placeholder while images load -->
+        <div class="slide slide-placeholder active">
+          <div class="slide-img-placeholder">
+            <i class="fa-solid fa-image"></i>
+            <p data-en="Add images 3–7 (or more) to the images/ folder"
+               data-np="images/ फोल्डरमा ३–७ (वा बढी) छविहरू थप्नुहोस्">
+              Add images 3–7 (or more) to the images/ folder
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Caption bar -->
+      <div class="slide-caption-bar" id="slideCaptionBar" aria-live="polite">
+        <span class="slide-caption-text" id="slideCaptionText"></span>
+        <span class="slide-counter" id="slideCounter"></span>
+      </div>
+
+      <!-- Controls -->
+      <button class="slide-btn slide-prev" id="slidePrev" aria-label="Previous image">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="slide-btn slide-next" id="slideNext" aria-label="Next image">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <!-- Dot indicators -->
+      <div class="slide-dots" id="slideDots" role="tablist" aria-label="Slide navigation"></div>
+    </div>
+  </section>
+
+  <!-- ===== GRID VIEW ===== -->
+  <section class="gallery-full-section section">
+    <div class="container">
+      <div class="gallery-grid-header">
+        <h2 data-en="All Photos" data-np="सबै फोटोहरू">All Photos</h2>
+        <p class="gallery-hint"
+           data-en="Click any photo to view full size."
+           data-np="पूर्ण आकारमा हेर्न कुनै पनि फोटोमा क्लिक गर्नुहोस्।">
+          Click any photo to view full size.
+        </p>
+      </div>
+
+      <!-- Grid populated by gallery.js -->
+      <div class="gallery-full-grid" id="galleryFullGrid">
+        <!-- placeholders -->
+        <div class="gf-placeholder"><i class="fa-solid fa-image"></i></div>
+        <div class="gf-placeholder"><i class="fa-solid fa-image"></i></div>
+        <div class="gf-placeholder"><i class="fa-solid fa-image"></i></div>
+        <div class="gf-placeholder"><i class="fa-solid fa-image"></i></div>
+        <div class="gf-placeholder"><i class="fa-solid fa-image"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <div class="lightbox-img-wrap">
+      <img id="lightboxImg" src="" alt="" />
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+  <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="WARN Nepal">
+          <div class="logo-img-wrap" id="footerLogoWrap">
+            <div class="logo-icon">W</div>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">WARN Nepal</span>
+            <span class="logo-sub"
+              data-en="Women Agency Research Center Nepal"
+              data-np="महिला एजेन्सी अनुसन्धान केन्द्र नेपाल">Women Agency Research Center Nepal</span>
+          </div>
+        </a>
+        <p data-en="A non-profit supporting disaster relief, scholarships for the underprivileged, and women empowerment since 2068."
+           data-np="२०६८ देखि विपद् राहत, विपन्नका लागि छात्रवृत्ति र महिला सशक्तिकरणमा काम गर्ने गैरनाफामूलक संस्था।">
+          A non-profit supporting disaster relief, scholarships for the underprivileged, and women empowerment since 2068.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4 data-en="Quick Links" data-np="द्रुत लिङ्कहरू">Quick Links</h4>
+        <ul>
+          <li><a href="index.html"         data-en="Home"    data-np="गृहपृष्ठ">Home</a></li>
+          <li><a href="gallery.html"        data-en="Gallery" data-np="ग्यालरी">Gallery</a></li>
+          <li><a href="index.html#purpose" data-en="Purpose" data-np="उद्देश्य">Purpose</a></li>
+          <li><a href="index.html#team"    data-en="Team"    data-np="टोली">Team</a></li>
+          <li><a href="index.html#contact" data-en="Contact" data-np="सम्पर्क">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4 data-en="Get In Touch" data-np="सम्पर्क गर्नुहोस्">Get In Touch</h4>
+        <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@warnnepal.org">info@warnnepal.org</a></p>
+        <p><i class="fa-solid fa-phone"></i> <a href="tel:+9779860451867">9860451867</a></p>
+        <p><i class="fa-solid fa-location-dot"></i>
+          <span data-en="Chetanamarga, Bafal, Kathmandu, Nepal" data-np="चेतनामार्ग, बाफल, काठमाडौं, नेपाल">Chetanamarga, Bafal, Kathmandu, Nepal</span>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-en="&copy; 2024 WARN Nepal. All rights reserved. Registered Non-Profit Organization, Nepal."
+         data-np="&copy; २०२४ WARN नेपाल। सर्वाधिकार सुरक्षित। दर्ता गैरनाफामूलक संस्था, नेपाल।">
+        &copy; 2024 WARN Nepal. All rights reserved. Registered Non-Profit Organization, Nepal.
+      </p>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- gallery.js must come AFTER main.js so lang helpers are available -->
+  <script src="js/main.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>
