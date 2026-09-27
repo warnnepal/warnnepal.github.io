@@ -20,38 +20,46 @@ images/
  └── gallery/        → gallery images (caption = filename)
 
 ─────────────────────────────────────────────────────────────
-1. LOGO   →  images/logo/
+1. LOGO  (also used as the FAVICON)   →  images/logo/
 ─────────────────────────────────────────────────────────────
-File name must be exactly:  logo.png  (or logo.jpg / logo.svg / logo.webp)
+Save the file as one of these names:
 
-  images/logo/logo.png
+  images/logo/logo.png     <-- recommended
+  images/logo/logo.jpg
+  images/logo/logo.jpeg
+  images/logo/logo.webp
+  images/logo/logo.svg
 
-Appears in the navbar and footer on every page.
-Recommended: transparent background, ~160×60 px.
-Falls back to the "W" letter badge if the file is missing.
+THIS FOLDER IS CURRENTLY EMPTY — that is why the navbar
+shows the "W" letter badge instead of a logo. As soon as you
+drop a file in with one of the names above, main.js picks it
+up automatically and uses the SAME image for:
+  • the navbar logo (every page)
+  • the footer logo (every page)
+  • the browser tab favicon
+
+Recommended: transparent PNG, ~320×120 px (or a square
+image if your logo is a round emblem).
+No code changes needed. The images/favicon/ folder is no
+longer used.
 
 ─────────────────────────────────────────────────────────────
 2. LANDING IMAGE   →  images/landing/
 ─────────────────────────────────────────────────────────────
-File name must be exactly:  landing.png  (or .jpg / .webp)
+File name must be exactly:  landing.jpg  (or .png / .webp)
 
-  images/landing/landing.png
+  images/landing/landing.jpg
 
 Used as the full-screen background on the Home / Hero section.
 Recommended: wide landscape photo, at least 1600×900 px.
 A dark overlay is applied automatically so text stays readable.
 
 ─────────────────────────────────────────────────────────────
-3. FAVICON   →  images/favicon/
+3. BIODATA FILES   →  biodata/   (outside this folder)
 ─────────────────────────────────────────────────────────────
-File name must be exactly:  favicon.png  (or favicon.ico)
-
-  images/favicon/favicon.png
-
-To activate it, add this line inside the <head> of index.html
-and gallery.html:
-
-  <link rel="icon" href="images/favicon/favicon.png" />
+Each team member's biodata goes in the top-level biodata/
+folder. The filename must match the person's slug.
+See biodata/README.txt for the full list.
 
 ─────────────────────────────────────────────────────────────
 4. TEAM PHOTOS   →  images/team/
@@ -59,10 +67,14 @@ and gallery.html:
 File name must match the data-photo slug on each team card.
 Current slugs (see index.html .team-avatar[data-photo]):
 
-  images/team/sunita-sharma.png    → Sunita Sharma
-  images/team/anita-thapa.png      → Anita Thapa
-  images/team/ramesh-kc.png        → Ramesh KC
-  images/team/priya-rai.png        → Priya Rai
+  narayani-tiwari.jpg          ✓     shiva-laxmi-upadhyay.jpg   (missing)
+  timila-yami.jpg              ✓     renuka-kattel.jpg          ✓
+  jamuna-tamrakar-sayami.jpg   ✓     narmada-thapa.jpg          ✓
+  pragya-acharya-gautam.jpg    ✓     sabita-kandel.jpg          ✓
+  shila-yogi.jpg               ✓     jyoti-panta.jpg            (missing)
+  parvati-kattel.jpg           ✓     kamala-pandey.jpg          (missing)
+
+  Any of .jpg .jpeg .png .webp works — square photos look best.
 
 Rules:
   • File name = lowercase, hyphens for spaces, no special chars
@@ -72,7 +84,7 @@ Rules:
 
 To add a new team member later:
   1. Add a new .team-card in index.html with data-photo="new-name"
-  2. Save the photo as  images/team/new-name.png
+  2. Save the photo as  images/team/new-name.jpg
 
 ─────────────────────────────────────────────────────────────
 5. GALLERY IMAGES   →  images/gallery/

@@ -11,24 +11,21 @@
    Use the exact filename including extension.
    ───────────────────────────────────────────── */
 const IMAGES = {
-  logo:    null,  /* drop images/logo/logo.png when ready */
+  /* Drop your logo in images/logo/ using any of these names.
+     The first file that loads is used for the navbar, footer AND favicon. */
+  logoCandidates: [
+    'images/logo/logo.png',
+    'images/logo/logo.jpg',
+    'images/logo/logo.jpeg',
+    'images/logo/logo.webp',
+    'images/logo/logo.svg'
+  ],
   landing: 'images/landing/landing.jpg',
 
-  /* Team photos — set path when photo exists in images/team/ */
-  team: {
-    'narayani-tiwari':        null,
-    'timila-yami':            null,
-    'jamuna-tamrakar-sayami': null,
-    'pragya-acharya-gautam':  null,
-    'shila-yogi':             null,
-    'parvati-kattel':         null,
-    'shiva-laxmi-upadhyay':   null,
-    'renuka-kattel':          null,
-    'narmada-thapa':          null,
-    'sabita-kandel':          null,
-    'jyoti-panata':           null,
-    'kamala-pandey':          null
-  },
+  /* Team photos — found automatically as images/team/<data-photo slug>.<ext>
+     e.g. images/team/kamala-pandey.jpg. Missing photos keep the icon. */
+  teamDir: 'images/team/',
+  teamExts: ['jpg', 'jpeg', 'png', 'webp'],
 
   /* Biodata files — filename (without extension) must match data-biodata slug.
      Put files in biodata/  e.g. biodata/narayani-tiwari.pdf */
@@ -39,32 +36,18 @@ const IMAGES = {
     'pragya-acharya-gautam':  'biodata/pragya-acharya-gautam.pdf',
     'shila-yogi':             'biodata/shila-yogi.pdf',
     'parvati-kattel':         'biodata/parvati-kattel.pdf',
-    'shiva-laxmi-upadhyay':   'biodata/shiva-laxmi-upadhyay.pdf',
+    'shiva-laxmi-upadhyay':   null,
     'renuka-kattel':          'biodata/renuka-kattel.pdf',
     'narmada-thapa':          'biodata/narmada-thapa.pdf',
     'sabita-kandel':          'biodata/sabita-kandel.pdf',
-    'jyoti-panata':           'biodata/jyoti-panata.pdf',
-    'kamala-pandey':          'biodata/kamala-pandey.pdf'
+    'jyoti-panta':            null,
+    'kamala-pandey':          null
   },
 
-  /* Gallery — list every file in images/gallery/
-     Caption is derived from the filename automatically */
-  gallery: [
-    'images/gallery/awareness.jpg',
-    'images/gallery/chitwan-camp.jpg',
-    'images/gallery/flood-relief.jpg',
-    'images/gallery/flood-relief-camp.jpeg',
-    'images/gallery/handover-of-goods.jpg',
-    'images/gallery/health-camp-chitwan.jpg',
-    'images/gallery/health-camp-chitwan-2.jpg',
-    'images/gallery/health-camp-chitwan-3.jpg',
-    'images/gallery/lele-relief.jpg',
-    'images/gallery/items-donated.jpg',
-    'images/gallery/scholarship.jpg',
-    'images/gallery/community-1.jpg',
-    'images/gallery/community-2.jpg',
-    'images/gallery/community-3.jpg'
-  ]
+  /* Gallery — comes from js/gallery-images.js, which is regenerated
+     by update-gallery.bat so every file in images/gallery/ shows up.
+     Caption is derived from the filename automatically. */
+  gallery: window.GALLERY_FILES || []
 };
 
 /* ─────────────────────────────────────────────
@@ -79,18 +62,44 @@ function fileToCaption(path) {
 }
 
 /* ─────────────────────────────────────────────
-   LOGO
+   LOGO + FAVICON
+   Tries each candidate path in order. The first one
+   that actually loads is placed in the navbar/footer
+   and reused as the favicon. If none load, the "W"
+   letter badge already in the HTML stays put.
    ───────────────────────────────────────────── */
-function initLogo() {
-  if (!IMAGES.logo) return;
+function setFavicon(src) {
+  document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]').forEach(l => l.remove());
+  ['icon', 'apple-touch-icon'].forEach(rel => {
+    const link = document.createElement('link');
+    link.rel  = rel;
+    link.href = src;
+    document.head.appendChild(link);
+  });
+}
+
+function applyLogo(src) {
   document.querySelectorAll('.logo-img-wrap').forEach(wrap => {
     wrap.innerHTML = '';
     const img     = document.createElement('img');
-    img.src       = IMAGES.logo;
+    img.src       = src;
     img.alt       = 'WARN Nepal logo';
     img.className = 'logo-img';
     wrap.appendChild(img);
   });
+  setFavicon(src);
+}
+
+function initLogo() {
+  const candidates = IMAGES.logoCandidates || [];
+
+  (function tryNext(i) {
+    if (i >= candidates.length) return;  /* keep the "W" badge fallback */
+    const probe = new Image();
+    probe.onload  = () => applyLogo(candidates[i]);
+    probe.onerror = () => tryNext(i + 1);
+    probe.src     = candidates[i];
+  })(0);
 }
 
 /* ─────────────────────────────────────────────
@@ -100,11 +109,21 @@ function initLandingImage() {
   const hero = document.getElementById('home');
   if (!hero || !IMAGES.landing) return;
 
-  hero.style.backgroundImage    = `url('${IMAGES.landing}')`;
-  hero.style.backgroundSize     = 'cover';
-  hero.style.backgroundPosition = 'center center';
-  hero.style.backgroundRepeat   = 'no-repeat';
+  /* Sizing lives in CSS (.hero::before / ::after). The URL is made absolute
+     because a relative url() inside a custom property may be resolved
+     against the stylesheet's folder instead of the page. */
+  const src = new URL(IMAGES.landing, document.baseURI).href;
+  hero.style.setProperty('--hero-img', `url('${src}')`);
   hero.classList.add('has-bg-image');
+
+  /* Use the photo's real shape so a replacement image is never stretched */
+  const probe  = new Image();
+  probe.onload = () => {
+    if (probe.naturalWidth && probe.naturalHeight) {
+      hero.style.setProperty('--hero-img-ratio', `${probe.naturalWidth} / ${probe.naturalHeight}`);
+    }
+  };
+  probe.src = src;
 }
 
 /* ─────────────────────────────────────────────
@@ -113,16 +132,20 @@ function initLandingImage() {
 function initTeamPhotos() {
   document.querySelectorAll('.team-avatar[data-photo]').forEach(avatar => {
     const slug = avatar.getAttribute('data-photo');
-    const src  = IMAGES.team[slug];
-    if (!src) return;  /* keep icon fallback */
+    const name = avatar.closest('.team-card')?.querySelector('h4')?.textContent.trim() || slug;
 
-    const img   = document.createElement('img');
-    img.src     = src;
-    img.alt     = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    img.loading = 'lazy';
-    avatar.innerHTML = '';
-    avatar.appendChild(img);
-    avatar.classList.add('has-photo');
+    (function tryNext(i) {
+      if (i >= IMAGES.teamExts.length) return;  /* keep icon fallback */
+      const img   = new Image();
+      img.onload  = () => {
+        img.alt = name;
+        avatar.innerHTML = '';
+        avatar.appendChild(img);
+        avatar.classList.add('has-photo');
+      };
+      img.onerror = () => tryNext(i + 1);
+      img.src     = IMAGES.teamDir + slug + '.' + IMAGES.teamExts[i];
+    })(0);
   });
 }
 
@@ -141,7 +164,7 @@ function initBiodataLinks() {
       return;
     }
     link.href = src;
-    link.setAttribute('download', '');
+    link.setAttribute('download', `${slug}-biodata.pdf`);
     link.setAttribute('aria-label', 'Download biodata');
   });
 }
@@ -173,7 +196,7 @@ function initGalleryPreview() {
       item.innerHTML = `
         <div class="gp-placeholder">
           <i class="fa-solid fa-image"></i>
-          <span>Add image to<br>images/gallery/</span>
+          <span>Add photos to images/gallery/ then run update-gallery.bat</span>
         </div>`;
     }
     grid.appendChild(item);
@@ -223,7 +246,7 @@ function handleScroll() {
 }
 window.addEventListener('scroll', handleScroll, { passive: true });
 
-const NAV_SECTIONS = ['home', 'about', 'gallery', 'purpose', 'team', 'contact'];
+const NAV_SECTIONS = ['home', 'about', 'gallery', 'purpose', 'programs', 'team', 'contact'];
 function updateActiveNav() {
   let current = 'home';
   NAV_SECTIONS.forEach(id => {
