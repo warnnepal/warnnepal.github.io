@@ -246,7 +246,7 @@ function handleScroll() {
 }
 window.addEventListener('scroll', handleScroll, { passive: true });
 
-const NAV_SECTIONS = ['home', 'about', 'gallery', 'purpose', 'programs', 'team', 'contact'];
+const NAV_SECTIONS = ['home', 'about', 'gallery', 'purpose', 'programs', 'team', 'contribute', 'contact'];
 function updateActiveNav() {
   let current = 'home';
   NAV_SECTIONS.forEach(id => {
@@ -313,6 +313,27 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         behavior: 'smooth'
       });
     }
+  });
+});
+
+/* ─────────────────────────────────────────────
+   COPY BANK ACCOUNT NUMBER
+   ───────────────────────────────────────────── */
+document.querySelectorAll('.bank-copy').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const label = btn.querySelector('.bank-copy-label');
+    try {
+      await navigator.clipboard.writeText(btn.dataset.copy);
+    } catch {
+      return;
+    }
+    btn.classList.add('copied');
+    if (label) label.textContent = currentLang === 'np' ? 'कपी भयो' : 'Copied';
+    clearTimeout(btn._resetTimer);
+    btn._resetTimer = setTimeout(() => {
+      btn.classList.remove('copied');
+      if (label) label.textContent = label.getAttribute('data-' + currentLang);
+    }, 2000);
   });
 });
 
