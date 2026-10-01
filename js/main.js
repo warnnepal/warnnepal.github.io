@@ -338,6 +338,55 @@ document.querySelectorAll('.bank-copy').forEach(btn => {
 });
 
 /* ─────────────────────────────────────────────
+   BROCHURE VIEWER
+   ───────────────────────────────────────────── */
+function initBrochureViewer() {
+  const viewer   = document.getElementById('brochureViewer');
+  const backdrop = document.getElementById('brochureBackdrop');
+  const img      = document.getElementById('brochureImg');
+  const caption  = document.getElementById('brochureCaption');
+  const thumbs   = [...document.querySelectorAll('.brochure-page')];
+  if (!viewer || !thumbs.length) return;
+
+  const pages = thumbs.map(t => t.querySelector('img'));
+  let index = 0;
+
+  const render = () => {
+    img.src = pages[index].src;
+    img.alt = pages[index].alt;
+    caption.textContent = currentLang === 'np'
+      ? `ब्रोसर — पृष्ठ ${index + 1} / ${pages.length}`
+      : `Brochure — page ${index + 1} of ${pages.length}`;
+  };
+  const open = i => {
+    index = i;
+    render();
+    viewer.hidden = false;
+    backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => {
+    viewer.hidden = true;
+    backdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+  const step = d => { index = (index + d + pages.length) % pages.length; render(); };
+
+  thumbs.forEach((t, i) => t.addEventListener('click', () => open(i)));
+  document.getElementById('brochureClose').addEventListener('click', close);
+  document.getElementById('brochurePrev').addEventListener('click', () => step(-1));
+  document.getElementById('brochureNext').addEventListener('click', () => step(1));
+  backdrop.addEventListener('click', close);
+  viewer.addEventListener('click', e => { if (e.target === viewer) close(); });
+  document.addEventListener('keydown', e => {
+    if (viewer.hidden) return;
+    if (e.key === 'Escape')     close();
+    if (e.key === 'ArrowLeft')  step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+}
+
+/* ─────────────────────────────────────────────
    FADE-UP INTERSECTION OBSERVER
    ───────────────────────────────────────────── */
 const fadeObs = new IntersectionObserver(entries => {
@@ -365,4 +414,5 @@ document.querySelectorAll('.purpose-card, .team-card, .focus-item, .stat-item').
   initTeamPhotos();
   initBiodataLinks();
   initGalleryPreview();
+  initBrochureViewer();
 })();

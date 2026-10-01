@@ -135,8 +135,28 @@
           sectors provisioned by the constitution stands at only 33%. Gender equality is addressed
           in law, but millions of women still have no access to justice. WARN exists to close that gap.
         </p>
-        <a href="#purpose" class="btn btn-primary"
-           data-en="Learn More" data-np="थप जान्नुहोस्">Learn More</a>
+        <div class="about-actions">
+          <a href="#purpose" class="btn btn-primary"
+             data-en="Learn More" data-np="थप जान्नुहोस्">Learn More</a>
+          <a href="brochure/warn-brochure.pdf" class="btn btn-outline-dark" download="WARN-Nepal-brochure.pdf">
+            <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+            <span data-en="Download Brochure" data-np="ब्रोसर डाउनलोड गर्नुहोस्">Download Brochure</span>
+          </a>
+        </div>
+
+        <div class="brochure-preview">
+          <h3 data-en="Our Brochure" data-np="हाम्रो ब्रोसर">Our Brochure</h3>
+          <div class="brochure-pages">
+            <button type="button" class="brochure-page" data-page="0" aria-label="View brochure page 1">
+              <img src="images/brochure/brochure-page-1.jpg" alt="WARN brochure page 1: cover, target areas, activities and contact" loading="lazy" />
+              <span data-en="Page 1" data-np="पृष्ठ १">Page 1</span>
+            </button>
+            <button type="button" class="brochure-page" data-page="1" aria-label="View brochure page 2">
+              <img src="images/brochure/brochure-page-2.jpg" alt="WARN brochure page 2: introduction, philosophy, objectives and approaches" loading="lazy" />
+              <span data-en="Page 2" data-np="पृष्ठ २">Page 2</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -811,7 +831,7 @@
                 <i class="fa-solid fa-location-dot"></i>
                 <div>
                   <strong data-en="Address" data-np="ठेगाना">Address</strong>
-                  <p data-en="Chetanamarga, Bafal, Kathmandu, Nepal" data-np="चेतनामार्ग, बाफल, काठमाडौं, नेपाल">Chetanamarga, Bafal, Kathmandu, Nepal</p>
+                  <p data-en="398, Chetana Marga, Tahachal, Kathmandu, Nepal" data-np="३९८, चेतनामार्ग, टहचल, काठमाडौं, नेपाल">398, Chetana Marga, Tahachal, Kathmandu, Nepal</p>
                 </div>
               </li>
               <li class="contact-map">
@@ -897,6 +917,7 @@
           <li><a href="#team"        data-en="Team"     data-np="टोली">Team</a></li>
           <li><a href="#contribute"  data-en="Contribute" data-np="योगदान">Contribute</a></li>
           <li><a href="#contact"     data-en="Contact"  data-np="सम्पर्क">Contact</a></li>
+          <li><a href="brochure/warn-brochure.pdf" download="WARN-Nepal-brochure.pdf" data-en="Brochure (PDF)" data-np="ब्रोसर (PDF)">Brochure (PDF)</a></li>
         </ul>
       </div>
       <div class="footer-contact">
@@ -904,7 +925,7 @@
         <p><i class="fa-solid fa-envelope"></i> <a href="mailto:wagency.nepal@gmail.com">wagency.nepal@gmail.com</a></p>
         <p><i class="fa-solid fa-phone"></i> <a href="tel:+9779841015324">+977-984-1015324</a></p>
         <p><i class="fa-solid fa-location-dot"></i>
-          <span data-en="Chetanamarga, Bafal, Kathmandu, Nepal" data-np="चेतनामार्ग, बाफल, काठमाडौं, नेपाल">Chetanamarga, Bafal, Kathmandu, Nepal</span>
+          <span data-en="398, Chetana Marga, Tahachal, Kathmandu, Nepal" data-np="३९८, चेतनामार्ग, टहचल, काठमाडौं, नेपाल">398, Chetana Marga, Tahachal, Kathmandu, Nepal</span>
         </p>
       </div>
     </div>
@@ -915,6 +936,23 @@
       </p>
     </div>
   </footer>
+
+  <div class="lightbox" id="brochureViewer" role="dialog" aria-modal="true" aria-label="Brochure viewer" hidden>
+    <button class="lightbox-close" id="brochureClose" aria-label="Close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="brochurePrev" aria-label="Previous page">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <div class="lightbox-img-wrap">
+      <img id="brochureImg" src="" alt="" />
+    </div>
+    <button class="lightbox-nav lightbox-next" id="brochureNext" aria-label="Next page">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    <div class="lightbox-caption" id="brochureCaption"></div>
+  </div>
+  <div class="lightbox-backdrop" id="brochureBackdrop"></div>
 
   <button id="backToTop" class="back-to-top" aria-label="Back to top">
     <i class="fa-solid fa-chevron-up"></i>
